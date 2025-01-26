@@ -1,6 +1,7 @@
 
 const grid = document.querySelector('.grid')
-
+const spanPlayer = document.querySelector('.jogador')
+const timer = document.querySelector('.timer')
 
 const characters = [
     'aang',
@@ -35,17 +36,6 @@ const createElement = (tag, className) => {
 let firstCard = '';
 let secondCard = '';
 
-const checkEndGame = () => {
-
-    const cartasReveladas = document.querySelectorAll('.cartaRevelada');
-
-    if(cartasReveladas.length === 20){
-        alert('Parabéns você ganhou o jogo!')
-    }
-
-}
-
-
 
 
 const checkCards = () => {
@@ -60,8 +50,8 @@ const checkCards = () => {
         firstCard = '';
         secondCard = '';
 
+  
         checkEndGame();
-
 
     } else {
         setTimeout(() => {
@@ -70,7 +60,20 @@ const checkCards = () => {
 
             firstCard = '';
             secondCard = '';
-        }, 1100);
+        }, 800);
+
+    }
+
+
+}
+
+const checkEndGame = () => {
+
+    const cartasReveladas = document.querySelectorAll('.cartaRevelada');
+
+    if (cartasReveladas.length === 20) {
+        clearInterval(this.loop);
+        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`)
 
     }
 
@@ -123,7 +126,6 @@ const loadGame = () => {
     const duplicateCharacters = [...characters, ...characters]
     const sortDuplicateCharacters = duplicateCharacters.sort(() => Math.random() - 0.5); //positivo ou negativo aleatorio
 
-    Math.random();
 
     duplicateCharacters.forEach((character) => {
 
@@ -133,4 +135,23 @@ const loadGame = () => {
     });
 }
 
-loadGame();
+
+const startTime = () => {
+    this.loop = setInterval(() => {
+        const currentTime = +timer.innerHTML;
+        timer.innerHTML = currentTime + 1
+    }, 1000);
+}
+
+
+
+window.onload = () => {
+    //Colocar o nome do jogador no Header
+    spanPlayer.innerHTML = localStorage.getItem('jogador');
+    startTime();
+    loadGame();
+
+}
+
+
+
