@@ -1,17 +1,41 @@
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(rgb(153, 208, 226), rgb(55, 55, 215));
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 50px; 
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5em;
+    width: 100%;
+    max-width: 700px;
+    padding: 15px 20px 15px;
+    margin: 0 0 30px;
+    border-radius: 10px;
+}
+
+
 .grid {
 
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     width: 100%;
-    max-width: 800px;
-    margin: 10px auto;
+    max-width: 700px;
+    margin: 0px auto;
 
 }
 
 .carta {
     aspect-ratio: 3/4;
-
     width: 100%;
     border-radius: 5px;
     position: relative;
@@ -33,6 +57,7 @@
 .frente{
     transform: rotateY(180deg);
     background-size: cover;
+    border: 1px solid black;
 }
 
 .atras{
